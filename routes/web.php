@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ResourcefulController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,6 @@ use App\Http\Controllers\CategoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/',[CategoryController::class,'ForFrontendAll'])->name('website');
 Route::GET('/relatedpic/{value}',[CategoryController::class,'SerachPic']);
 
@@ -26,10 +26,10 @@ Route::controller(CategoryController::class)->prefix('/category')->middleware(['
  	Route::get('/manage','AllCategory')->name('category.all');
  	Route::get('/add','AddCategory')->name('category.add');
  	Route::POST('/store','StoreCategory')->name('category.store');
+ 	Route::GET('/delete/{id}','deletecategory')->name('deletecategory');
 });
-
-
-
+// Route::resource('option', 'Back\AttributeOptionController', ['as' => 'back', 'except' => 'show']);
+Route::resource('re/users', ResourcefulController::class,['as' => 'back', 'except' => 'show']);
 
 Route::get('/allbackenddashboard',function(){
    return view('backenddashboard');

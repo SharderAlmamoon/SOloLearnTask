@@ -27,55 +27,44 @@
                         <div class="col-12">
                             <ul class="portfolio__nav nav justify-content-center mb-4">
                                 <li class="nav-item">
-                                    <button class="portfolio__nav__btn position-relative bg-transparent border-0 active" data-filter="*">All</button>
+                                    <button class="portfolio__nav__btn position-relative bg-transparent border-0 active" data-filter="#allCategorypic">All</button>
                                 </li>
 
-                                @foreach($categorirs as $category)
-                                <li class="nav-item">
-                                    <button value="{{$category->category_related}}" onclick="galleryShow(this.value)" class="portfolio__nav__btn position-relative bg-transparent border-0" data-filter=".vehicle">{{$category->category_name}}</button>
+                                @foreach($categorirs as $category) 
+                                 <li class="nav-item">
+                                    <button class="portfolio__nav__btn position-relative bg-transparent border-0" data-filter="#allrelated_{{$category->category_related}}">{{$category->category_name}}</button>
                                 </li>
                                 @endforeach
                             </ul>
                         </div>
                     </div>
+
+                    <div class="row grid">
+                         @foreach($categorirs as $category) 
+                            <div class="grid-item col-lg-4 col-sm-6" id="allCategorypic">
+                                <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
+                                    <img src="{{asset('Category/'.$category->category_image)}}" alt="Random Image" class="w-100">
+                                </a>
+                            </div>
+                         @endforeach
+                    </div>
+
                     <!-- Portfolio Cards Container -->
-                    <div class="row grid" id="allPicshow">
-                        <div class="grid-item col-lg-4 col-sm-6 vehicle">
-                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
-                                <img src="https://source.unsplash.com/s4LntDZqEW8/380x500" alt="Random Image" class="w-100">
-                            </a>
-                        </div>
-
-
-                        <div class="grid-item col-lg-4 col-sm-6 animal">
-                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
-                                <img src="https://source.unsplash.com/LSoZprF1HSw/380x500" alt="Random Image" class="w-100">
-                            </a>
-                        </div>
-                        <div class="grid-item col-lg-4 col-sm-6 vehicle">
-                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
-                                <img src="https://source.unsplash.com/vI9_zv29VnQ/380x500" alt="Random Image" class="w-100">
-                            </a>
-                        </div>
-                        <div class="grid-item col-lg-4 col-sm-6 road">
-                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
-                                <img src="https://source.unsplash.com/_SaC-shd2n4/380x500" alt="Random Image" class="w-100">
-                            </a>
-                        </div>
-                        <div class="grid-item col-lg-4 col-sm-6 work-station">
-                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
-                                <img src="https://source.unsplash.com/QeVmJxZOv3k/380x500" alt="Random Image" class="w-100">
-                            </a>
-                        </div>
-                        <div class="grid-item col-lg-4 col-sm-6 work-station">
-                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
-                                <img src="https://source.unsplash.com/M1qSY_IuF4c/380x500" alt="Random Image" class="w-100">
-                            </a>
-                        </div>
+                    <div class="row grid">
+                         @foreach($categorirs as $category) 
+                              @foreach($category->imageall as $categoryimg) 
+                                    <div class="grid-item col-lg-4 col-sm-6 vehicle" id="allrelated_{{$category->category_related}}">
+                                        <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
+                                            <img src="{{asset('Category/'.$categoryimg->category_image)}}" alt="Random Image" class="w-100">
+                                        </a>
+                                    </div>
+                              @endforeach
+                        @endforeach
                     </div>
                 </div>
             </section>
             <!-- Portfolio Section End -->
+            <a href="{{Route('back.users.update',1)}}">RESOURCE INDEX</a>
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
