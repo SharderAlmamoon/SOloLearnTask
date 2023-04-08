@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ResourcefulController;
+use App\Http\Controllers\MultinationalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +41,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::controller(MultinationalController::class)->prefix('/multinational')->group(function(){
+    Route::get('/manage','MultinationalManage')->name('manage.multinational');
+    Route::get('/create','MultinationalCreate')->name('multinational.create');
+    Route::post('/store','MultinationalStore')->name('multinational.store');
+    Route::get('/edit/{id}','MultinationalEdit')->name('multinational.edit');
+    Route::post('/update/{id}','MultinationalUpdate')->name('multinational.update');
+    Route::get('/delete/{id}','MultinationalDelete')->name('multinational.delete');
+});
+
 
 require __DIR__.'/auth.php';

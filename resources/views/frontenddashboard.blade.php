@@ -15,6 +15,10 @@
 
     <!-- /* Please ❤ this if you like it! 😊 */ -->
 
+    <div class="">
+        <a href="{{ route('manage.multinational') }}" class="btn btn-sm btn-success">Multinational</a>
+    </div>
+
             <!-- Portfolio Section Start -->
             <section class="portfolio overflow-hidden">
                 <div class="container">
@@ -40,26 +44,38 @@
                     </div>
 
                     <div class="row grid">
-                         @foreach($categorirs as $category) 
-                            <div class="grid-item col-lg-4 col-sm-6" id="allCategorypic">
-                                <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
-                                    <img src="{{asset('Category/'.$category->category_image)}}" alt="Random Image" class="w-100">
-                                </a>
-                            </div>
-                         @endforeach
+                        <div class="grid-item col-lg-4 col-sm-6" id="allCategorypic">
+                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
+                                <img src="https://source.unsplash.com/s4LntDZqEW8/380x500" alt="Random Image" class="w-100">
+                            </a>
+                        </div>
+                        <div class="grid-item col-lg-4 col-sm-6" id="allCategorypic">
+                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
+                                <img src="https://source.unsplash.com/s4LntDZqEW8/380x500" alt="Random Image" class="w-100">
+                            </a>
+                        </div>
+                        <div class="grid-item col-lg-4 col-sm-6" id="allCategorypic">
+                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
+                                <img src="https://source.unsplash.com/s4LntDZqEW8/380x500" alt="Random Image" class="w-100">
+                            </a>
+                        </div>
+                        <div class="grid-item col-lg-4 col-sm-6" id="allCategorypic">
+                            <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
+                                <img src="https://source.unsplash.com/s4LntDZqEW8/380x500" alt="Random Image" class="w-100">
+                            </a>
+                        </div>
                     </div>
-
                     <!-- Portfolio Cards Container -->
                     <div class="row grid">
                          @foreach($categorirs as $category) 
                               @foreach($category->imageall as $categoryimg) 
                                     <div class="grid-item col-lg-4 col-sm-6 vehicle" id="allrelated_{{$category->category_related}}">
                                         <a href="#!" class="portfolio__card position-relative d-inline-block w-100">
-                                            <img src="{{asset('Category/'.$categoryimg->category_image)}}" alt="Random Image" class="w-100">
+                                            <img src="{{asset('Category/'.$category->category_image)}}" alt="Random Image" class="w-100">
                                         </a>
                                     </div>
-                              @endforeach
-                        @endforeach
+                               @endforeach
+                         @endforeach
                     </div>
                 </div>
             </section>

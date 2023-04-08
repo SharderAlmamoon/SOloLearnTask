@@ -15,7 +15,8 @@ class CategoryController extends Controller
 	// FOR FRONTEND
 	public function ForFrontendAll(){
 		$categorirs = Category::orderBy('id','ASC')->limit(5)->get();
-		return view('frontenddashboard',compact('categorirs'));
+		$categorirsImage = categoryImage::orderBy('id','ASC')->get();
+		return view('frontenddashboard',compact('categorirs','categorirsImage'));
 	} //End Method
 
 	public function SerachPic($value){
